@@ -7,11 +7,9 @@ import { useNavigate } from 'react-router-dom';
 const PREFIX = 'Home';
 
 const classes = {
-  root: `${PREFIX}-root`,
-  navbar: `${PREFIX}-navbar`,
-  title: `${PREFIX}-title`,
-  welcomeAnimation: `${PREFIX}-welcomeAnimation`
-};
+    root: `${PREFIX}-root`,
+    welcomeAnimation: `${PREFIX}-welcomeAnimation`
+  };
 
 const Root = styled('div')(({ theme }) => ({
   [`&.${classes.root}`]: {
@@ -62,21 +60,12 @@ const Root = styled('div')(({ theme }) => ({
 }));
 
 export default function Home() {
-    const navigate=useNavigate()
-  return (
-    <Root  className={classes.root}>
-      <AppBar sx={{bgcolor: '#1976d2'}} position="static" color="default" className={classes.navbar}>
-        <Toolbar sx={{bgcolor: '#1976d2'}}>
-          <Typography  variant="h6" className={classes.title}>
-          </Typography>
-          <Button sx={{color:'white',fontWeight: 'bold'}} onClick={()=> navigate('/login')} color="inherit">Login</Button>
-          <Button sx={{color:'white',fontWeight: 'bold'}} color="inherit">Login as admin</Button>
-        </Toolbar>
-      </AppBar>
-      <Typography variant="h4" className={classes.welcomeAnimation}>
-        Welcome to Our Website!
-      </Typography>
-      <img style={{boxShadow : 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'}} src='https://au.res.keymedia.com/files/image/iStock-classroom-girls-students-school.jpg'></img>
-    </Root>
-  );
-}
+    return (
+      <Root className={classes.root}>
+        <Typography variant="h4" className={classes.welcomeAnimation}>
+          Welcome to Our Website!
+        </Typography>
+        <img style={{ boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px' }} src='https://au.res.keymedia.com/files/image/iStock-classroom-girls-students-school.jpg' alt="Classroom" />
+      </Root>
+    );
+  }

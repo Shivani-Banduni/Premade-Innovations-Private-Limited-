@@ -1,41 +1,41 @@
 import React from 'react';
 import { Box, Typography, List, ListItem, ListItemText, Divider, Paper } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 
-const drawerWidth = 240;
+const Sidebar = () => {
+  const location = useLocation();
+  const user = location.state?.user || JSON.parse(localStorage.getItem('isUserValid')) || JSON.parse(localStorage.getItem('formData'))?.slice(-1)[0] || {};
 
-// Mock data
-const userData = JSON.parse(localStorage.getItem('formData'));
-const singleUser = userData ? userData[userData.length - 1] : {};
-
-const Sidebar = () => (
-  <Box sx={{ flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box' }, p: 2 }}>
-    <Typography variant="h6" sx={{ my: 2 }}>
-      User Information
-    </Typography>
-    <Paper elevation={3} sx={{ p: 2 }}>
-      <Typography variant="subtitle1" gutterBottom>
-        {singleUser.name}
+  return (
+    <Box sx={{ width: 400, flexShrink: 0, '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' }, p: 2 }}>
+      <Typography variant="h6" sx={{ my: 2 }}>
+        User Information
       </Typography>
-      <Divider sx={{ mb: 2 }} />
-      <List dense>
-        <ListItem>
-          <ListItemText primary="Email" secondary={singleUser.email} />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="Details" secondary={singleUser.details} />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="Age" secondary={singleUser.age} />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="Mobile No." secondary={singleUser.phoneNo} />
-        </ListItem>
-        <ListItem>
-          <ListItemText primary="College Name" secondary={singleUser.college} />
-        </ListItem>
-      </List>
-    </Paper>
-  </Box>
-);
+      <Paper elevation={3} sx={{ p: 2 }}>
+        <Typography variant="subtitle1" gutterBottom>
+          {user.name}
+        </Typography>
+        <Divider sx={{ mb: 2 }} />
+        <List dense>
+          <ListItem>
+            <ListItemText primary="Email" secondary={user.email} />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="Details" secondary={user.details} />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="Age" secondary={user.age} />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="Mobile No." secondary={user.phoneNo} />
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="College Name" secondary={user.college} />
+          </ListItem>
+        </List>
+      </Paper>
+    </Box>
+  );
+};
 
 export default Sidebar;

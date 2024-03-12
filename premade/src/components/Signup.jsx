@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Grid } from '@mui/material';
-
+import { useNavigate } from 'react-router-dom';
 function Signup() {
+    const navigate=useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     details: '',
@@ -30,7 +31,8 @@ function Signup() {
   // Save the updated array back to local storage using the correct key name
   localStorage.setItem('formData', JSON.stringify(existingFormData));
     // Add form submission logic here
-  };
+    navigate('/dashboard')
+    window.location.reload()  };
 
   return (
     <Container maxWidth="sm" sx={{ border:1}}>

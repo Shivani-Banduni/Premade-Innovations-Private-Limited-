@@ -19,8 +19,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Sidebar from './Sidebar';
+import { useLocation } from 'react-router-dom';
 
 export default function Dashboard() {
+
+    const alldata = JSON.parse(localStorage.getItem('formData')) ;
+
+    const location = useLocation();
+    const user = location.state?.user || JSON.parse(localStorage.getItem('isUserValid')) || JSON.parse(localStorage.getItem('formData'))?.slice(-1)[0] || {};
+user.picture=  user.selfie;
+user.location=user.location;
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [temporaryUser, setTemporaryUser] = useState({ selfie: '', location: {} });

@@ -11,7 +11,7 @@ const navigate=useNavigate();
   const [loginStatus, setLoginStatus] = useState('');
 
   const storedFormData = JSON.parse(localStorage.getItem('formData')) ;
-console.log(storedFormData)
+
 
   const handleLogin = (event) => {
 
@@ -19,11 +19,13 @@ console.log(storedFormData)
     // Retrieve formData from localStorage
     // const storedFormData = JSON.parse(localStorage.getItem('formData')) || [];
 
-    const isUserValid = storedFormData.some(e => e.email === email && e.password === password);
+    const isUserValid = storedFormData.find(e => e.email === email && e.password === password);
+console.log(isUserValid)
 
     if (isUserValid) {
       setLoginStatus('Login successful!');
-      navigate('/dashboard')
+      
+      navigate('/dashboard', { state: { user: isUserValid } });
     } else {
       setLoginStatus('Invalid email or password.');
     }
