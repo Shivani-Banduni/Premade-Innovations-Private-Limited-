@@ -24,6 +24,9 @@ This project is an attendance tracking system designed to streamline the process
 
 - Node.js
 - npm or yarn
+- react-router-dom
+- local storage
+- material ui (css library)
 
 ### Installation
 
