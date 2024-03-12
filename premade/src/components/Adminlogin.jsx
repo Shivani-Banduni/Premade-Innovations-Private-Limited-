@@ -6,7 +6,7 @@ const Adminlogin = () => {
 const navigate=useNavigate()
   const [user, setUser] = useState({
     name: 'shivani',
-    email: 'shivanibanduni009@gmail.com',
+    email: 'shivanibanduni009@premade.io',
     password: '123',
   });
 
@@ -22,9 +22,9 @@ const navigate=useNavigate()
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{padding:6, borderRadius:2, boxShadow:'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset'}}>
       <Typography component="h1" variant="h5">
-        Sign Up
+        Login As Admin
       </Typography>
       <form onSubmit={handleSubmit}>
         <TextField

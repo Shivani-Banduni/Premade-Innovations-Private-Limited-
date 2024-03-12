@@ -18,9 +18,10 @@ const navigate=useNavigate();
     event.preventDefault();
     // Retrieve formData from localStorage
     // const storedFormData = JSON.parse(localStorage.getItem('formData')) || [];
-
-    const isUserValid = storedFormData.find(e => e.email === email && e.password === password);
-console.log(isUserValid)
+    let isUserValid
+    if(storedFormData){
+     isUserValid = storedFormData.find(e => e.email === email && e.password === password);
+ }
 
     if (isUserValid) {
       setLoginStatus('Login successful!');
@@ -34,7 +35,7 @@ console.log(isUserValid)
 
 
   return (
-    <Container maxWidth="sm" sx={{border:1,   borderRadius:2, padding:5, marginTop:15}}>
+    <Container maxWidth="sm" sx={{borderRadius:2,  padding:5, marginTop:15, boxShadow:'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset'}}>
       <Typography variant="h4" component="h1" gutterBottom>
         Login
       </Typography>

@@ -29,7 +29,7 @@ export default function Dashboard() {
     const user = location.state?.user || JSON.parse(localStorage.getItem('isUserValid')) || JSON.parse(localStorage.getItem('formData'))?.slice(-1)[0] || {};
 user.picture=  user.selfie;
 user.location=user.location;
-
+console.log(user)
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [temporaryUser, setTemporaryUser] = useState({ selfie: '', location: {} });
@@ -78,16 +78,35 @@ user.location=user.location;
       console.error('Geolocation is not supported by this browser.');
     }
   };
-let n=0
+
   const saveUser = () => {
     if (temporaryUser.selfie && temporaryUser.location.latitude && temporaryUser.location.longitude) {
-      setUsers((prevUsers) => [...prevUsers, { ...temporaryUser, id: prevUsers.length + 1 }]);
-      setTemporaryUser({ selfie: '', location: {} }); // Reset temporary user
-setnum(1)
+      const allUsers = JSON.parse(localStorage.getItem('formData')) || [];
+      const currentUser = allUsers.find(u => u.email === user.email); // Assuming 'user.email' is the identifier
+  
+      if (currentUser) {
+        // Update the currentUser with new selfie and location
+        currentUser.selfie = temporaryUser.selfie;
+        currentUser.location = temporaryUser.location;
+      } else {
+        // If no currentUser is found, consider adding logic to handle this scenario,
+        // for example, adding the new user to allUsers array.
+        console.error('User not found in formData');
+      }
+  
+      // Save the updated allUsers array back to localStorage
+      localStorage.setItem('formData', JSON.stringify(allUsers));
+  
+      // Reset temporaryUser and potentially update local component state as needed
+      setTemporaryUser({ selfie: '', location: {} });
+      setShowVideo(false);
+      setnum(1); // Assuming you're using 'num' to control the ability to save again
     } else {
       alert('Please take a selfie and capture your location.');
     }
   };
+  
+
 
   return (
     <Box sx={{ display: 'flex' }}>
