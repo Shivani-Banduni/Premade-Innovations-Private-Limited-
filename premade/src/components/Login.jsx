@@ -16,8 +16,6 @@ const navigate=useNavigate();
   const handleLogin = (event) => {
 
     event.preventDefault();
-    // Retrieve formData from localStorage
-    // const storedFormData = JSON.parse(localStorage.getItem('formData')) || [];
     let isUserValid
     if(storedFormData){
      isUserValid = storedFormData.find(e => e.email === email && e.password === password);

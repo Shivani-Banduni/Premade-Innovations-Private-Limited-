@@ -10,10 +10,6 @@ const navigate=useNavigate()
     password: '123',
   });
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser({ ...user, [name]: value });
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +34,6 @@ const navigate=useNavigate()
           autoFocus
           
            value={user.name}
-          // onChange={handleChange}
         />
         <TextField
           variant="outlined"
@@ -49,7 +44,6 @@ const navigate=useNavigate()
           name="email"
           autoComplete="email"
            value={user.email}
-          // onChange={handleChange}
         />
         <TextField
           variant="outlined"
@@ -61,7 +55,6 @@ const navigate=useNavigate()
           type="password"
           autoComplete="current-password"
            value={user.password}
-          // onChange={handleChange}
         />
         <Button
           type="submit"

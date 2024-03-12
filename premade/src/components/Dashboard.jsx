@@ -85,22 +85,17 @@ console.log(user)
       const currentUser = allUsers.find(u => u.email === user.email); // Assuming 'user.email' is the identifier
   
       if (currentUser) {
-        // Update the currentUser with new selfie and location
         currentUser.selfie = temporaryUser.selfie;
         currentUser.location = temporaryUser.location;
       } else {
-        // If no currentUser is found, consider adding logic to handle this scenario,
-        // for example, adding the new user to allUsers array.
         console.error('User not found in formData');
       }
   
-      // Save the updated allUsers array back to localStorage
       localStorage.setItem('formData', JSON.stringify(allUsers));
   
-      // Reset temporaryUser and potentially update local component state as needed
       setTemporaryUser({ selfie: '', location: {} });
       setShowVideo(false);
-      setnum(1); // Assuming you're using 'num' to control the ability to save again
+      setnum(1); 
     } else {
       alert('Please take a selfie and capture your location.');
     }

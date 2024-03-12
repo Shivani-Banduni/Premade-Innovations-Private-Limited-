@@ -25,12 +25,9 @@ function Signup() {
 
     const existingFormData = JSON.parse(localStorage.getItem('formData')) || [];
 
-  // Push new form data into the array
   existingFormData.push({...formData});
 
-  // Save the updated array back to local storage using the correct key name
   localStorage.setItem('formData', JSON.stringify(existingFormData));
-    // Add form submission logic here
     navigate('/dashboard')
     window.location.reload()  };
 
@@ -102,6 +99,7 @@ function Signup() {
               name="phoneNo"
               value={formData.phoneNo}
               onChange={handleChange}
+              disabled={formData.phoneNo.length>10}
               required
             />
           </Grid>
